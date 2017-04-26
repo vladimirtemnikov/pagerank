@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require_relative 'dependencies'
+
+$inputs = InputManager.new
+$parser = PageParser.new
+$logger = Logger.new
+$timer = Timer.new
+
+$logger.log_links_or_abort
+
+Services::CalculateWithSimpleMatrix.call
+Services::CalculateWithSparseMatrix.call
+
+Services::CalculateWithMultithreadSparseMatrix.call
